@@ -1,15 +1,20 @@
 package org.tact;
 
 import java.util.ArrayList;
+
 import java.util.List;
+import java.util.Random;
 
 public class JavaQuestion {
+	private Random  rm;
+	//private List<String> al;
+	
 
 	public static void main(String[] args) {
 
 		// TODO Auto-generated method stub
 		// void getQuestion(){
-		List<String> al = new ArrayList<String>(20);
+		List <String> al = new ArrayList<String>(20);
 		al.add("what is string java");
 		al.add("how to split spring in java");
 		al.add("what is spring pool");
@@ -31,12 +36,19 @@ public class JavaQuestion {
 		al.add("What is the purpose of default constructor");
 		al.add("Does constructor return any value");
 
-		//getQuestion(al);
+		getQuestion(al);
 	}
-
-	static void getQuestion(ArrayList al) {
+ 
+ 
+	static void getQuestion(List al) {
+		Random rm = new Random(al.size());
+	
 		for (int i = 0; i < 5; i++) {
-			System.out.println(al.get(i).toString());
+			
+			//int m= rm.nextInt();
+			//System.out.println(al.get(m).toString());
+			System.out.println(al.get(rm.nextInt(al.size())));
+			
 		}
 	}
 
