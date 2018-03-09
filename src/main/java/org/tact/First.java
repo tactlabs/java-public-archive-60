@@ -56,7 +56,7 @@ public class First {
 			a[i] = sc.nextInt();
 		}
 		a1 obj;
-		obj = new a1();
+		obj = new a1(); // aggrection is a Has relationship
 		Multiple a2 = new Multiple(); //create an object in last class 
 			for(int i=0;i<num;i++){
 			a2.a1(a[i]); // constructor
