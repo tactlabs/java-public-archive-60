@@ -56,7 +56,7 @@ public class WordSearchMaker3 {
 		String[] keys = javaKeys;
 		if(programming.equalsIgnoreCase("java")){
 			keys = javaKeys;
-		}
+		                                        }
 		
 		int maxColumns = getMaxColumns(keys);
 		//System.out.println("Max columns : "+maxColumns);
