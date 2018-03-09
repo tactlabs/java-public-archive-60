@@ -2,6 +2,21 @@ package org.tact;
 
 import java.util.Scanner;
 
+class com{
+ public static final int possible = 0;
+ public static final int question = 0;
+ 
+public void possible(){
+	 int possible = 2;
+ }
+public void question() {
+	// TODO Auto-generated method stub
+	int question =2;
+	
+}
+	
+	
+}
 public class Combination {
   
 	int result = 1;
@@ -32,15 +47,16 @@ public class Combination {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
+		//Scanner sc = new Scanner(System.in);
+		com  c = new com();
 
 		System.out.println("enter the how many possible:");
-		int possible = sc.nextInt();
+	     c.possible();
 
 		System.out.println("enter the how many Question:");
-		int question = sc.nextInt();
+		 c. question();
 
-		Combination cn = new Combination(possible,question);
+		new Combination(c.possible,c.question);
 
 	}
 
