@@ -7,7 +7,7 @@ import java.util.Random;
 public class MarketPredictions {
 	int s = 0;
 	int a = 0;
-	public static void main(String[] args) {
+	public static void main(String[] args)throws InterruptedException {
 		 MarketPredictions mp = new  MarketPredictions();
 		 mp.start();
 
@@ -21,16 +21,18 @@ public class MarketPredictions {
 		int day = 10;
 		for(int i=0;i<day;i++){
 			
-			if(s<=li.size()){
+			if(i<=li.size()){
 				System.out.print(li.get(s)+" ");
+				l1.add(li.get(s));
 				s+=1;
 				System.out.print(li.get(s)+" ");
+				l1.add(li.get(s));
 				s+=1;
 				System.out.println(" ");
-			} else if(a<=li.size()){
-				System.out.print(li.get(a)+" ");
+			} else {
+				System.out.print(l1.get(a)+" ");
 				a+=1;
-				System.out.print(li.get(a)+" ");
+				System.out.print(l1.get(a)+" ");
 				a+=1;
 				
 			} 
