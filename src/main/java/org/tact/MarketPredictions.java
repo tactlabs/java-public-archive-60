@@ -19,19 +19,20 @@ public class MarketPredictions {
 		li.add("Tips:8"); li.add("Tips:9"); li.add("Tips:10"); li.add("Tips:11");li.add("Tips:12"); li.add("Tips:13"); li.add("Tips:14");
 		Random rm = new Random(li.size());
 		int day = 20;
-		for(int i=1;i<day;i++){
+		System.out.println("TOTALDAY:"+day);
+		for(int i=1;i<=day;i++){
 			
 			if(i<=(li.size()/2)){
-				System.out.print(li.get(s)+" ");
+				System.out.print("DAY:"+i+":"+li.get(s)+" ");
 				//l1.add(li.get(s));
 				s+=1;
-				System.out.print(li.get(s)+" ");
+				System.out.print("DAY:"+i+":"+li.get(s)+" ");
 				//l1.add(li.get(s));
 				s+=1;
 				System.out.println(" ");
 			} else {
-				System.out.print(li.get(rm.nextInt(li.size()))+" ");
-				System.out.print(li.get(rm.nextInt(li.size()))+" ");
+				System.out.print("DAY:"+i+":"+li.get(rm.nextInt(li.size()))+" ");
+				System.out.print("DAY:"+i+":"+li.get(rm.nextInt(li.size()))+" ");
 				System.out.println();
 				
 			} 
