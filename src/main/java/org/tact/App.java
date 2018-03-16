@@ -1,26 +1,23 @@
 package org.tact;
 
 import java.util.ArrayList;
-class a{
-	void show(){
-	System.out.println("class object a");
-	String s = "1b2n3m4j";
-	String b = " ";
-	for(int i=0;i< s.length()-1;i++){
-		if(s.charAt(i)>=48 && s.charAt(i)<= 57){
-			b += s.charAt(i);
-		}
-	}
-	System.out.println(b);
-	}
-}
 public class App 
 {
     public static void main( String[] args )
     {
-    	a s; // aggrecation
-    	 s= new a();
-    	s.show(); //agrrecation
+    	int n1=5;
+    	int n2=10;
+    	int n3,i,count=23;    
+    	 System.out.println("1-"+n1);
+    	 System.out.println("2-"+n2);
+    	 
+    	for(i=2;i<count;++i)    
+    	 {    
+    	  n3=n1+n2;    
+    	  System.out.println(i+1+"-"+n3);    
+    	  n1=n2;    
+    	  n2=n3;    
+    	 }    
     	
     }
 }
