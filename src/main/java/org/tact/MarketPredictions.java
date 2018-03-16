@@ -14,26 +14,25 @@ public class MarketPredictions {
 	}
 	private void start(){
 		List <String> li = new ArrayList<String>(10);
-		List <String> l1 = new ArrayList<String>(10);
-		li.add("h1"); li.add("h2"); li.add("h3"); li.add("h4");li.add("h5"); li.add("h6"); li.add("h7");
-		li.add("h8"); li.add("h9"); li.add("h10"); li.add("h11");li.add("h12"); li.add("h13"); li.add("h14");
+		//List <String> l1 = new ArrayList<String>(10);
+		li.add("Tips:1"); li.add("Tips:2"); li.add("Tips:3"); li.add("Tips:4");li.add("Tips:5"); li.add("Tips:6"); li.add("Tips:7");
+		li.add("Tips:8"); li.add("Tips:9"); li.add("Tips:10"); li.add("Tips:11");li.add("Tips:12"); li.add("Tips:13"); li.add("Tips:14");
 		Random rm = new Random(li.size());
-		int day = 10;
-		for(int i=0;i<day;i++){
+		int day = 20;
+		for(int i=1;i<day;i++){
 			
-			if(i<=li.size()){
+			if(i<=(li.size()/2)){
 				System.out.print(li.get(s)+" ");
-				l1.add(li.get(s));
+				//l1.add(li.get(s));
 				s+=1;
 				System.out.print(li.get(s)+" ");
-				l1.add(li.get(s));
+				//l1.add(li.get(s));
 				s+=1;
 				System.out.println(" ");
 			} else {
-				System.out.print(l1.get(a)+" ");
-				a+=1;
-				System.out.print(l1.get(a)+" ");
-				a+=1;
+				System.out.print(li.get(rm.nextInt(li.size()))+" ");
+				System.out.print(li.get(rm.nextInt(li.size()))+" ");
+				System.out.println();
 				
 			} 
 		}
