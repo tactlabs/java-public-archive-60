@@ -1,11 +1,15 @@
 package org.tact;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-
 import org.springframework.social.twitter.api.Tweet;
+import org.springframework.social.twitter.api.Twitter;
 import org.springframework.social.twitter.api.TwitterProfile;
+import org.springframework.social.twitter.api.UserList;
 import org.springframework.social.twitter.api.impl.TwitterTemplate;
+import org.springframework.social.twitter.connect.TwitterConnectionFactory;
+
 
 public class TwitterTweetsPreviousWeek {
 	
@@ -17,8 +21,10 @@ public class TwitterTweetsPreviousWeek {
 
 	private static String twtAccessTokenSecret = "kmJjsVp5Vz7obs0alZBnwvBhsr9hOt5mn3fSddFF91F8o";
 
+	//@param Arrays String[];
 
 	public static void main(String[] args) {
+		
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter the handle:");
