@@ -2,6 +2,7 @@ package org.tact;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Queue;
@@ -11,9 +12,6 @@ import javax.management.Query;
 
 import org.springframework.social.twitter.api.Tweet;
 import org.springframework.social.twitter.api.impl.TwitterTemplate;
-
-
-
 
 public class TwitterTweetsPreviousWeek {
 	
@@ -25,10 +23,7 @@ public class TwitterTweetsPreviousWeek {
 
 	private static String twtAccessTokenSecret = "kmJjsVp5Vz7obs0alZBnwvBhsr9hOt5mn3fSddFF91F8o";
 
-	//@param Arrays String[];
-
 	public static void main(String[] args) {
-		
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter the handle:");
@@ -37,40 +32,43 @@ public class TwitterTweetsPreviousWeek {
 	}
 	
 	private static void getTwitterFeeds(String handle) {
-		 		
-	
+		 			
 		try {
 
 			TwitterTemplate twitterTemplate = new TwitterTemplate(
 					twtConsumerKey, twtConsumerSecret, twtAccessToken,
 					twtAccessTokenSecret);
+			List<Tweet> tweets = twitterTemplate.timelineOperations().getUserTimeline(handle, 15);	
 			
-			
-
-			List<Tweet> tweets = twitterTemplate.timelineOperations().getUserTimeline(handle, 150);
-			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		    LocalDateTime now = LocalDateTime.now(); 
-		   // Date tdydate = dtf.format(now);
-		    java.util.Date date=new java.util.Date();
+		    java.util.Date date=new java.util.Date(); // today date
+		    //System.out.println("date :" + date);
+		    List<String> al = new ArrayList<String>();
+		    
 			for (Tweet tweet : tweets) {
-				
-				Date Created = tweet.getCreatedAt();
-				Date msg = new Date();
-				
+				Date date1 = tweet.getCreatedAt();  // tweets date
+				//Date msg = new Date();
+				int diffdays = (int) ((date.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24));
+				//System.out.println("diff :" + diffdays);
 				String tweetContent = tweet.getText();
-				if(date.compareTo (Created) < 0){
-				System.out.println("TWEET TEXT :" + tweetContent);
-				System.out.println("TWEET TEXT :" + Created);
-				System.out.println("TWEET TEXT :" + Created);
+				
+				if(diffdays < 7){  //how to compare two dates
+				//System.out.println("date :" + date1);
+				al.add(tweetContent);
+				//System.out.println("TWEET TEXT :" + tweetContent);			
 				}
-			}
-			
-
+			}	
+			for(int i=0;i<al.size();i++) {
+				if(al.get(i).substring(0,2).equals("RT")){ //remove the RT
+					
+				}else{
+					System.out.println(al.get(i));	
+				}
+	            
+	        }
 		} catch (Exception e) {
 			 e.printStackTrace();
 			 System.err.println("{getTwitterFeeds} error occured  : "+ e.getMessage());
 		}
-		
 		
 	}
 
