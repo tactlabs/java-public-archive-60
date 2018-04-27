@@ -1,15 +1,30 @@
 package org.tact;
 
+
+
 import java.io.FileOutputStream;
 
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.List;
 import com.itextpdf.text.ListItem;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.api.Spaceable;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+
+import javax.swing.JPanel;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
+import org.jfree.ui.ApplicationFrame;
+import org.jfree.ui.RefineryUtilities;
+ 
+/* We will use DefaultPieDataset to define the data for the Pie Chart */
+
 
 public class RockStarProfile {
 
@@ -139,6 +154,20 @@ public class RockStarProfile {
 			document.add( Chunk.NEWLINE );
 			document.add(new Paragraph("Technology Used:"));
 			document.add(new Paragraph(" JAVA, XML, NODEJS"));
+			document.add( Chunk.NEWLINE );
+			try{
+			DefaultPieDataset myPiedataset = new DefaultPieDataset();
+			myPiedataset.setValue("Java", 12.9);
+            myPiedataset.setValue("C++", 37.9);
+            myPiedataset.setValue("C", 86.5);
+            myPiedataset.setValue("VB", 80.5);
+            myPiedataset.setValue("Shell Script", 19.5);
+            document.add((Element) myPiedataset);
+            JFreeChart chart = ChartFactory.createPieChart("World Population by countries", myPiedataset, true, true, false);
+            document.add((Element) chart);	
+			}catch(Exception e){
+				System.out.println(e);				
+			}
 			document.close();
 		} catch(Exception e){
 			System.out.println(e);
