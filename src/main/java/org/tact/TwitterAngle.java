@@ -1,5 +1,10 @@
 package org.tact;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,6 +23,44 @@ public class TwitterAngle {
 		private static String twtAccessTokenSecret = "kmJjsVp5Vz7obs0alZBnwvBhsr9hOt5mn3fSddFF91F8o";
 		
 		private static String[] handdles = {"guptpuneet", "andreazurek", "swethareddy", "sanjaymodi", "RajanAnandan"};
+		
+		private Connection connect() {
+	        // SQLite connection string
+	        String url = "jdbc:sqlite:D:/sqllite/chinook.db";
+	        Connection conn = null;
+	        try {
+	            conn = DriverManager.getConnection(url);
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+	        return conn;
+	    }
+		
+		public void insert(String username, String twitteraccountname) {
+	        String sql = "INSERT INTO TwitterAngle(username,twitteraccountname) VALUES(?,?)";
+	        
+	 
+	        try (Connection conn = this.connect();
+	            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+	            pstmt.setString(1, username);
+	            pstmt.setString(2, twitteraccountname);
+	            pstmt.executeUpdate();
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	        }
+		}
+		
+		public void insert1(String arrli){
+	        String sql1 = "INSERT INTO Twittertweets(twittertweets) VALUES(?)";
+	        try (Connection conn = this.connect();
+		         PreparedStatement pstmt = conn.prepareStatement(sql1)) {
+		         pstmt.setString(1, arrli);
+		         pstmt.executeUpdate();
+		    }catch (SQLException e) {
+		         System.out.println(e.getMessage());
+		    }
+        }
+
 
 		public static void main(String[] args) {
 			
@@ -29,7 +72,13 @@ public class TwitterAngle {
 			}
 		}
 		
+		
+		
+		
+		
+		
 		private static void getTwitterFeeds(String handle) {
+			ArrayList<String> arrli = new ArrayList<String>();
 			 			
 			try {
 
@@ -38,10 +87,21 @@ public class TwitterAngle {
 						twtAccessTokenSecret);
 				List<Tweet> tweets = twitterTemplate.timelineOperations().getUserTimeline(handle, 200);	
 				System.out.println("------------------------------------------------"+handle+"--------------------------------------------------------------------");
+				
+				TwitterAngle app = new TwitterAngle();
+		        // insert three new rows
+		        app.insert(handle, handle);
+		        String s = " ";
 				for(Tweet tweet: tweets){
 					
-					System.out.println(tweet.getText());	
-				}			
+				//System.out.println(tweet.getText());	
+		        arrli.add(tweet.getText());
+		        s +=tweet.getText()+"\n";
+		     	}			
+		        app.insert1(s);
+		       // for(int i=0;i<((CharSequence) arrli).length();i++){
+		        //	arrli.remove(0);
+		        //}
 				System.out.println();
 				
 			} catch (Exception e) {
