@@ -63,30 +63,21 @@ public class TwitterAngle {
 
 
 		public static void main(String[] args) {
-			
-			/*Scanner sc = new Scanner(System.in);
-			System.out.print("Enter the handle:");
-			String handle = sc.next();*/
 			for (String handdles : handdles) {
 			 getTwitterFeeds(handdles);
 			}
 		}
-		
-		
-		
-		
-		
 		
 		private static void getTwitterFeeds(String handle) {
 			ArrayList<String> arrli = new ArrayList<String>();
 			 			
 			try {
 
-				TwitterTemplate twitterTemplate = new TwitterTemplate(
+				 TwitterTemplate twitterTemplate = new TwitterTemplate(
 						twtConsumerKey, twtConsumerSecret, twtAccessToken,
 						twtAccessTokenSecret);
-				List<Tweet> tweets = twitterTemplate.timelineOperations().getUserTimeline(handle, 200);	
-				System.out.println("------------------------------------------------"+handle+"--------------------------------------------------------------------");
+				 List<Tweet> tweets = twitterTemplate.timelineOperations().getUserTimeline(handle, 200);	
+				 //System.out.println("------------------------------------------------"+handle+"--------------------------------------------------------------------");
 				
 				TwitterAngle app = new TwitterAngle();
 		        // insert three new rows
@@ -97,14 +88,13 @@ public class TwitterAngle {
 				//System.out.println(tweet.getText());	
 		        arrli.add(tweet.getText());
 		        s +=tweet.getText()+"\n";
-		     	}			
-		        app.insert1(s);
-		       // for(int i=0;i<((CharSequence) arrli).length();i++){
-		        //	arrli.remove(0);
-		        //}
-				System.out.println();
+		     	}
 				
-			} catch (Exception e) {
+		        app.insert1(s);
+		        s = " ";
+				
+				
+			}catch(Exception e) {
 				 e.printStackTrace();
 				 System.err.println("{getTwitterFeeds} error occured  : "+ e.getMessage());
 			}
