@@ -6,7 +6,7 @@ public class RandomTest {
 public static void main(String[] args){
 		String val = " ";
 		
-		String emailid = "msparthi ruth@gmail.com";
+		String emailid = "msparthiruth@gmail.com";
 		String array[] = emailid.split("@");
 		int i=0;
 	    for (String temp: array){
