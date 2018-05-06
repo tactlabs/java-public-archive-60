@@ -4,6 +4,10 @@ package org.tact;
 
 import java.io.FileOutputStream;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
@@ -12,16 +16,6 @@ import com.itextpdf.text.ListItem;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-
-import javax.swing.JPanel;
-
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.general.PieDataset;
-import org.jfree.ui.ApplicationFrame;
-import org.jfree.ui.RefineryUtilities;
  
 /* We will use DefaultPieDataset to define the data for the Pie Chart */
 
@@ -31,7 +25,7 @@ public class RockStarProfile {
 	public static void main(String[] args) {
 		try{
 			Document document = new Document();
-			PdfWriter.getInstance(document, new FileOutputStream("d:/Rockstar.pdf"));
+			PdfWriter.getInstance(document, new FileOutputStream("p:/Rockstar.pdf"));
 			 
 			document.open();
 			//Format font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
@@ -44,6 +38,7 @@ public class RockStarProfile {
 			document.add( Chunk.NEWLINE );
 			document.add(new Paragraph("Programming Experience & Self Rating"));
 			document.add( Chunk.NEWLINE );
+			
 			PdfPTable table = new PdfPTable(4);
 			table.addCell("Technology"); 
 			table.addCell("Exp.in Years");
@@ -86,6 +81,7 @@ public class RockStarProfile {
 			document.add( Chunk.NEWLINE );
 			document.add(new Paragraph("Programming activities"));
 			document.add( Chunk.NEWLINE );
+			
 			PdfPTable table1 = new PdfPTable(2);
 			table1.addCell("Activity"); 
 			table1.addCell("Link");
@@ -99,6 +95,7 @@ public class RockStarProfile {
 			document.add( Chunk.NEWLINE );
 			document.add(new Paragraph("Top Problems Solved In Career"));
 			document.add( Chunk.NEWLINE );
+			
 			PdfPTable table2 = new PdfPTable(2);
 			table2.addCell("Created a NodeJS API to test 3000+ content when we migrated from one CDN to another. This came as a sudden requirement and is completed in a single day, where manual testing would be tedious.");
 			table2.addCell("When suddenly some of the PayPal IPN fails, Debugged the whole PayPal process and after comparing the data, found Paypal suddenly start sending repetitive keys which were thought to be unique. Fixed the issue and updated all the missing accounts using a PHP script");
@@ -114,6 +111,7 @@ public class RockStarProfile {
 			document.add( Chunk.NEWLINE );
 			document.add(new Paragraph("Projects"));
 			document.add( Chunk.NEWLINE );
+			
 			PdfPTable table3 = new PdfPTable(2);
 			table3.addCell("BotSample      View Code on Github    Feb 13 2018");
 			table3.addCell("Bus-Tracking-App View Code on Github Jan 08 2018");
@@ -132,6 +130,7 @@ public class RockStarProfile {
 			document.add(new Paragraph("TENTKOTTA "));
 			document.add( Chunk.NEWLINE );
 			document.add(new Paragraph("Online movie streaming platform over a variety of devices in high quality legally."));
+			
 			List unorderedList = new List(List.UNORDERED);
 			unorderedList.add(new ListItem("Understanding the requirements from the client. "));
 			unorderedList.add(new ListItem("Interaction with customers to solve their issues. "));
@@ -146,6 +145,7 @@ public class RockStarProfile {
 			document.add( Chunk.NEWLINE );
 			document.add(new Paragraph("SUPER SARAVANA STORES APP "));
 			document.add(new Paragraph("An Android Application for Super Saravana Stores, a shopping center for its customer interaction. "));
+			
 			List unorderedList1 = new List(List.UNORDERED);
 			unorderedList1.add(new ListItem("Understanding the requirements and developed a POC. "));
 			unorderedList1.add(new ListItem("End to end Development of the Android App from scratch to final product."));
@@ -155,18 +155,19 @@ public class RockStarProfile {
 			document.add(new Paragraph("Technology Used:"));
 			document.add(new Paragraph(" JAVA, XML, NODEJS"));
 			document.add( Chunk.NEWLINE );
+			
 			try{
-			DefaultPieDataset myPiedataset = new DefaultPieDataset();
-			myPiedataset.setValue("Java", 12.9);
-            myPiedataset.setValue("C++", 37.9);
-            myPiedataset.setValue("C", 86.5);
-            myPiedataset.setValue("VB", 80.5);
-            myPiedataset.setValue("Shell Script", 19.5);
-            document.add((Element) myPiedataset);
-            JFreeChart chart = ChartFactory.createPieChart("World Population by countries", myPiedataset, true, true, false);
-            document.add((Element) chart);	
+				DefaultPieDataset myPiedataset = new DefaultPieDataset();
+				myPiedataset.setValue("Java", 12.9);
+	            myPiedataset.setValue("C++", 37.9);
+	            myPiedataset.setValue("C", 86.5);
+	            myPiedataset.setValue("VB", 80.5);
+	            myPiedataset.setValue("Shell Script", 19.5);
+	            document.add((Element) myPiedataset);
+	            JFreeChart chart = ChartFactory.createPieChart("World Population by countries", myPiedataset, true, true, false);
+	            document.add((Element) chart);	
 			}catch(Exception e){
-				System.out.println(e);				
+				System.out.println(e);	
 			}
 			document.close();
 		} catch(Exception e){
