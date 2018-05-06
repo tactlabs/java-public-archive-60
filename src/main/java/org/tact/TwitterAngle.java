@@ -22,7 +22,7 @@ public class TwitterAngle {
 
 		private static String twtAccessTokenSecret = "kmJjsVp5Vz7obs0alZBnwvBhsr9hOt5mn3fSddFF91F8o";
 		
-		private static String[] handdles = {"guptpuneet", "andreazurek", "swethareddy", "sanjaymodi", "RajanAnandan"};
+		private static String[] handdles = {"guptpuneet", "andreazurek", "swethareddy", "sanjaymodi", "RajanAnandan", "andreazurek", "Healthstarter", "shayna7", "ajaychopra", "leitersdorf"};
 		
 		private Connection connect() {
 	        // SQLite connection string
