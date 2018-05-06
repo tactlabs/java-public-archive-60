@@ -22,10 +22,10 @@ public class FuzzyLogic {
 	       // System.out.println(TimeUnit.MILLISECONDS.toMinutes(now.getTime() - past.getTime()) + " minutes ago");
             if(TimeUnit.MILLISECONDS.toHours(now.getTime() - past.getTime())<24){
             	 System.out.println(TimeUnit.MILLISECONDS.toHours(now.getTime() - past.getTime()) + " hours ago");
-            }else{
+            }else if(TimeUnit.MILLISECONDS.toDays(now.getTime() - past.getTime())<=30){
 	        //System.out.println(TimeUnit.MILLISECONDS.toHours(now.getTime() - past.getTime()) + " hours ago");
 	        System.out.println(TimeUnit.MILLISECONDS.toDays(now.getTime() - past.getTime()) + " days ago");
-            }
+            } 
            // System.out.println(TimeUnit.MILLISECONDS.toWeeks(now.getTime() - past.getTime()) + " days ago");
 	    }
 	    catch (Exception j){
