@@ -13,6 +13,16 @@ public class BehavioralTest {
 
 	public static void main(String[] args) {
 		// Scanner sc = new Scanner(System.in);
+		BehavioralTest bht =  new BehavioralTest();
+		
+		
+		List<Map<String, Object>> dbList = bht.getQuestions();
+		
+		System.out.println(dbList);//
+		
+	}
+	
+	public List<Map<String, Object>> getQuestions(){
 
 		List<Map<String, Object>> dbList = new ArrayList<Map<String, Object>>();
 
@@ -58,14 +68,14 @@ public class BehavioralTest {
 		
 		Iterator i = s.iterator();
 		for (Object val : s) {
-			System.out.println("\"" + val + "\" = [");
+			//System.out.println("\"" + val + "\" = [");
 			String input = String.valueOf(val);
 			for (Map<String, Object> entry : dbList) {
 				if (entry.get("topic").equals(input)) {
-					System.out.println(entry);					
+					//System.out.println(entry);					
 				}
 			}
-			System.out.println("]");
+			//System.out.println("]");
 		}
 
 		/*
@@ -76,5 +86,6 @@ public class BehavioralTest {
 		 * {code=dummycode:1, question=node 2, topic=java} ],
 		 */
 
+		return dbList;
 	}
 }
