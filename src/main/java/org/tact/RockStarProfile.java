@@ -8,12 +8,14 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.List;
 import com.itextpdf.text.ListItem;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
  
@@ -25,7 +27,7 @@ public class RockStarProfile {
 	public static void main(String[] args) {
 		try{
 			Document document = new Document();
-			PdfWriter.getInstance(document, new FileOutputStream("p:/Rockstar.pdf"));
+			PdfWriter.getInstance(document, new FileOutputStream("D:/rockstar.pdf"));
 			 
 			document.open();
 			//Format font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
@@ -38,8 +40,9 @@ public class RockStarProfile {
 			document.add( Chunk.NEWLINE );
 			document.add(new Paragraph("Programming Experience & Self Rating"));
 			document.add( Chunk.NEWLINE );
-			
+		   // PdfPCell cell = null;
 			PdfPTable table = new PdfPTable(4);
+			//cell.setBackgroundColor(BaseColor.BLUE);
 			table.addCell("Technology"); 
 			table.addCell("Exp.in Years");
 			table.addCell("self Rating out of 10");
