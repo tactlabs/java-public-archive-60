@@ -12,6 +12,8 @@ import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.List;
 import com.itextpdf.text.ListItem;
 import com.itextpdf.text.Paragraph;
@@ -33,16 +35,17 @@ public class RockStarProfile {
 			//Format font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
 			//Chunk chunk = new Chunk("Hello World");
 			 
-			document.add(new Paragraph("Personal Bio"));
+			document.add(new Paragraph("Personal Bio ",FontFactory.getFont(FontFactory.TIMES_BOLD,15/*Font.BOLD*/)));
 			document.add( Chunk.NEWLINE );			
 			document.add(new Paragraph("I'm a full stack developer with a keen interest in strategy and growth. Love creating new things and an enthusiastic learner. Currently, I am working with Vuedata Technologies providing legal Tamil OTT content through website and apps."));
 			document.add( Chunk.NEWLINE );
 			document.add( Chunk.NEWLINE );
-			document.add(new Paragraph("Programming Experience & Self Rating"));
+			document.add(new Paragraph("Programming Experience & Self Rating",FontFactory.getFont(FontFactory.TIMES_BOLD,15)));
 			document.add( Chunk.NEWLINE );
-		   // PdfPCell cell = null;
 			PdfPTable table = new PdfPTable(4);
+			//PdfPCell cell = new PdfPCell(new Paragraph());
 			//cell.setBackgroundColor(BaseColor.BLUE);
+			//table.addCell(cell);
 			table.addCell("Technology"); 
 			table.addCell("Exp.in Years");
 			table.addCell("self Rating out of 10");
@@ -82,7 +85,7 @@ public class RockStarProfile {
 			document.add(table);
 			
 			document.add( Chunk.NEWLINE );
-			document.add(new Paragraph("Programming activities"));
+			document.add(new Paragraph("Programming activities",FontFactory.getFont(FontFactory.TIMES_BOLD,15)));
 			document.add( Chunk.NEWLINE );
 			
 			PdfPTable table1 = new PdfPTable(2);
@@ -96,7 +99,7 @@ public class RockStarProfile {
 			table1.addCell("https://github.com/mazghul");	
 			document.add(table1);
 			document.add( Chunk.NEWLINE );
-			document.add(new Paragraph("Top Problems Solved In Career"));
+			document.add(new Paragraph("Top Problems Solved In Career",FontFactory.getFont(FontFactory.TIMES_BOLD,15)));
 			document.add( Chunk.NEWLINE );
 			
 			PdfPTable table2 = new PdfPTable(2);
@@ -112,7 +115,7 @@ public class RockStarProfile {
 			table2.addCell("  ");
 			document.add(table2);
 			document.add( Chunk.NEWLINE );
-			document.add(new Paragraph("Projects"));
+			document.add(new Paragraph("Projects",FontFactory.getFont(FontFactory.TIMES_BOLD,15)));
 			document.add( Chunk.NEWLINE );
 			
 			PdfPTable table3 = new PdfPTable(2);
@@ -124,13 +127,13 @@ public class RockStarProfile {
 			table3.addCell(" ");
 			document.add(table3);
 			document.add( Chunk.NEWLINE );
-			document.add(new Paragraph("Employment"));
+			document.add(new Paragraph("Employment",FontFactory.getFont(FontFactory.TIMES_BOLD,15)));
 			document.add( Chunk.NEWLINE );
 			document.add(new Paragraph("Software Engineer"));
 			document.add(new Paragraph("VueData Technologies Limited"));
 			document.add(new Paragraph("Oct 2016 - Present"));
 			document.add(new Paragraph("Android and Web development"));
-			document.add(new Paragraph("TENTKOTTA "));
+			document.add(new Paragraph("TENTKOTTA ",FontFactory.getFont(FontFactory.TIMES_BOLD,15)));
 			document.add( Chunk.NEWLINE );
 			document.add(new Paragraph("Online movie streaming platform over a variety of devices in high quality legally."));
 			
@@ -143,10 +146,10 @@ public class RockStarProfile {
 			unorderedList.add(new ListItem("Took ownership and enhanced the application for mobile and TV devices."));
 			unorderedList.add(new ListItem("Developed the RESTful API"));
 			document.add(unorderedList);
-			document.add(new Paragraph("Technology Used:"));
+			document.add(new Paragraph("Technology Used:",FontFactory.getFont(FontFactory.TIMES_BOLD,15)));
 			document.add(new Paragraph("HTML5, CSS, PHP, SQL, XML, JAVA, NODEJS, PAYPAL API, GRAPH API."));
 			document.add( Chunk.NEWLINE );
-			document.add(new Paragraph("SUPER SARAVANA STORES APP "));
+			document.add(new Paragraph("SUPER SARAVANA STORES APP ",FontFactory.getFont(FontFactory.TIMES_BOLD,15)));
 			document.add(new Paragraph("An Android Application for Super Saravana Stores, a shopping center for its customer interaction. "));
 			
 			List unorderedList1 = new List(List.UNORDERED);
@@ -155,11 +158,11 @@ public class RockStarProfile {
 			unorderedList1.add(new ListItem("Developed the RESTful API."));
 			document.add(unorderedList1);
 			document.add( Chunk.NEWLINE );
-			document.add(new Paragraph("Technology Used:"));
+			document.add(new Paragraph("Technology Used:",FontFactory.getFont(FontFactory.TIMES_BOLD,15)));
 			document.add(new Paragraph(" JAVA, XML, NODEJS"));
 			document.add( Chunk.NEWLINE );
 			
-			try{
+		/*	try{
 				DefaultPieDataset myPiedataset = new DefaultPieDataset();
 				myPiedataset.setValue("Java", 12.9);
 	            myPiedataset.setValue("C++", 37.9);
@@ -171,12 +174,14 @@ public class RockStarProfile {
 	            document.add((Element) chart);	
 			}catch(Exception e){
 				System.out.println(e);	
-			}
+			}*/
 			document.close();
 		} catch(Exception e){
 			System.out.println(e);
 			
 		}
 	}
+
+	
 
 }
