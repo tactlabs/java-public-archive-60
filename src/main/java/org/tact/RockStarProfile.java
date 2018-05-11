@@ -3,6 +3,7 @@ package org.tact;
 
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
@@ -11,12 +12,14 @@ import org.jfree.data.general.DefaultPieDataset;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.List;
 import com.itextpdf.text.ListItem;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -26,6 +29,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 public class RockStarProfile {
 
+	private static final String FONT = null;
 	public static void main(String[] args) {
 		try{
 			Document document = new Document();
@@ -101,31 +105,79 @@ public class RockStarProfile {
 			document.add( Chunk.NEWLINE );
 			document.add(new Paragraph("Top Problems Solved In Career",FontFactory.getFont(FontFactory.TIMES_BOLD,15)));
 			document.add( Chunk.NEWLINE );
-			
-			PdfPTable table2 = new PdfPTable(2);
+			PdfPTable table2 = new PdfPTable(1);
 			table2.addCell("Created a NodeJS API to test 3000+ content when we migrated from one CDN to another. This came as a sudden requirement and is completed in a single day, where manual testing would be tedious.");
-			table2.addCell("When suddenly some of the PayPal IPN fails, Debugged the whole PayPal process and after comparing the data, found Paypal suddenly start sending repetitive keys which were thought to be unique. Fixed the issue and updated all the missing accounts using a PHP script");
-			table2.addCell("Got spammed by 2000+ emails in 5 minutes for our support mail. Redirected the page origin and implemented captcha authentication in 1 hour thus not missing the tickets and fixing the issue");
-			table2.addCell("When there where too many data mismatch between our and our partner's record which lead to a lot of confusion, wrote a PHP script to get the reconciliation and correct them.");
-			table2.addCell("                                                                                                                                                                          ");
-			table2.addCell("Went on to Apalya Technologies, Hyderabad to fix the issue for Sun NXT app on Lyca STB and moving to production");
-			table2.addCell("When our APIs were down at 2 am due to high traffic, fixed the issue and increased the performance in 20 minutes to bring back the apps live.");
-			table2.addCell("Fixed the broken facebook login, for which we didn't have credentials, by debugging the changes in Graph API, found the admin of the app using app id and got back the credentials. Thus saving 10000+ records of data.");
-			table2.addCell("Implementing token signing techniques to avoid hackers stealing our content.");
-			table2.addCell("  ");
 			document.add(table2);
+			document.add( Chunk.NEWLINE );
+			PdfPTable table3 = new PdfPTable(1);
+			table3.addCell("When suddenly some of the PayPal IPN fails, Debugged the whole PayPal process and after comparing the data, found Paypal suddenly start sending repetitive keys which were thought to be unique. Fixed the issue and updated all the missing accounts using a PHP script");
+			document.add(table3);
+			document.add( Chunk.NEWLINE );
+			PdfPTable table4 = new PdfPTable(1);
+			table4.addCell("Got spammed by 2000+ emails in 5 minutes for our support mail. Redirected the page origin and implemented captcha authentication in 1 hour thus not missing the tickets and fixing the issue");
+			document.add(table4);
+			document.add( Chunk.NEWLINE );
+			PdfPTable table5 = new PdfPTable(1);
+			table5.addCell("When there where too many data mismatch between our and our partner's record which lead to a lot of confusion, wrote a PHP script to get the reconciliation and correct them.");
+			document.add(table5);
+			document.add( Chunk.NEWLINE );
+			PdfPTable table6 = new PdfPTable(1);
+			table6.addCell("Went on to Apalya Technologies, Hyderabad to fix the issue for Sun NXT app on Lyca STB and moving to production");
+			document.add(table6);
+			document.add( Chunk.NEWLINE );
+			PdfPTable table7 = new PdfPTable(1);
+			table7.addCell("When our APIs were down at 2 am due to high traffic, fixed the issue and increased the performance in 20 minutes to bring back the apps live.");
+			document.add(table7);
+			document.add( Chunk.NEWLINE );
+			PdfPTable table8 = new PdfPTable(1);
+			table8.addCell("Fixed the broken facebook login, for which we didn't have credentials, by debugging the changes in Graph API, found the admin of the app using app id and got back the credentials. Thus saving 10000+ records of data.");
+			document.add(table8);
+			document.add( Chunk.NEWLINE );
+			PdfPTable table9 = new PdfPTable(1);
+			table9.addCell("Implementing token signing techniques to avoid hackers stealing our content.");
+			document.add(table9);
+			table2.addCell("  ");
+			
 			document.add( Chunk.NEWLINE );
 			document.add(new Paragraph("Projects",FontFactory.getFont(FontFactory.TIMES_BOLD,15)));
 			document.add( Chunk.NEWLINE );
 			
-			PdfPTable table3 = new PdfPTable(2);
-			table3.addCell("BotSample      View Code on Github    Feb 13 2018");
-			table3.addCell("Bus-Tracking-App View Code on Github Jan 08 2018");
-			table3.addCell("GPSTracking View Code on Github Jan 08 2018");
-			table3.addCell("OutFocusRED View Code on Github Jan 08 2018");
-			table3.addCell("Outlink View Code on Github Jan 08 2018");
-			table3.addCell(" ");
-			document.add(table3);
+			PdfPTable table10 = new PdfPTable(1);
+			table10.setWidthPercentage(105);
+			table10.setSpacingBefore(11f);
+			table10.setSpacingAfter(11f);
+			//PdfPCell cell = new PdfPCell(new Paragraph("BotSample"));
+			//PdfPCell cell1 = new PdfPCell(new Paragraph("BotSample"));
+			//PdfPCell cell2 = new PdfPCell(new Paragraph("BotSample"));
+			//table10.addCell(getNormalCell("Test", null, 12));
+	        table10.addCell("BotSample \nView Code on Github\nFeb 13 2018 ");
+			//table10.addCell(cell,cell1);
+			//table10.addCell(cell1);
+			//table10.addCell(cell2);
+			document.add(table10);
+			document.add( Chunk.NEWLINE );
+			
+			PdfPTable table11 = new PdfPTable(1);
+			table11.addCell("Bus-Tracking-App \nView Code on Github \nJan 08 2018");
+			document.add(table11);
+			document.add( Chunk.NEWLINE );
+			
+			PdfPTable table12 = new PdfPTable(1);			
+			table12.addCell("GPSTracking \nView Code on Github \nJan 08 2018");
+			document.add(table12);
+			document.add( Chunk.NEWLINE );
+			
+			PdfPTable table13 = new PdfPTable(1);
+			table13.addCell("OutFocusRED \nView Code on Github \nJan 08 2018");
+			document.add(table13);
+			document.add( Chunk.NEWLINE );
+			
+			PdfPTable table14 = new PdfPTable(1);
+			table14.addCell("Outlink \nView Code on Github \nJan 08 2018");
+			document.add(table14);
+			//document.add( Chunk.NEWLINE );
+			//table10.addCell(" ");
+			//document.add(table10);
 			document.add( Chunk.NEWLINE );
 			document.add(new Paragraph("Employment",FontFactory.getFont(FontFactory.TIMES_BOLD,15)));
 			document.add( Chunk.NEWLINE );
@@ -180,8 +232,30 @@ public class RockStarProfile {
 			System.out.println(e);
 			
 		}
-	}
-
-	
+	}	
+	 public static PdfPCell getNormalCell(String string, String language, float size)
+	            throws DocumentException, IOException {
+	        if(string != null && "".equals(string)){
+	            return new PdfPCell();
+	        }
+	        Font f  = getFontForThisLanguage(language);
+	        if(size < 0) {
+	            f.setColor(BaseColor.RED);
+	            size = -size;
+	        }
+	        f.setSize(size);
+	        PdfPCell cell = new PdfPCell(new Phrase(string, f));
+	        cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+	        return cell;
+	    }
+	 public static Font getFontForThisLanguage(String language) {
+	        if ("czech".equals(language)) {
+	            return FontFactory.getFont(FONT, "Cp1250", true);
+	        }
+	        if ("greek".equals(language)) {
+	            return FontFactory.getFont(FONT, "Cp1253", true);
+	        }
+	        return FontFactory.getFont(FONT, null, true);
+	    }
 
 }
