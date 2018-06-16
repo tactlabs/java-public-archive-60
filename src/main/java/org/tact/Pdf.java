@@ -23,7 +23,7 @@ public class Pdf {
 	public static void main(String[] args) {
 		try{
 		Document document = new Document();
-		PdfWriter.getInstance(document, new FileOutputStream("d:/a.pdf"));
+		PdfWriter.getInstance(document, new FileOutputStream("f:/a.pdf"));
 		 
 		document.open();
 		//Format font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
